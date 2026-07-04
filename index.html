@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Best Friend?</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    width:90%;
+    max-width:400px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+h1{
+    color:#333;
+    margin-bottom:20px;
+}
+
+p{
+    color:#555;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+button{
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    margin:8px;
+}
+
+.yes{
+    background:#4CAF50;
+    color:white;
+}
+
+.next{
+    background:#2575fc;
+    color:white;
+    width:100%;
+}
+
+.no{
+    background:#ff4d6d;
+    color:white;
+    position:fixed;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:16px;
+    margin:20px 0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<div id="page1" class="page active">
+
+<h1>😊 Hey!</h1>
+
+<p>
+I've really enjoyed getting to know you.
+<br><br>
+You're honestly an amazing person.
+<br><br>
+💙 Will you be my best friend? 💙
+</p>
+
+<button class="yes" onclick="showPage(2)">
+Yes 💙
+</button>
+
+<button class="no" id="noButton">
+No 🙈
+</button>
+
+</div>
+
+<div id="page2" class="page">
+
+<h1>Yay!! 🎉</h1>
+
+<p>
+I'm really happy you said yes!
+<br><br>
+When are we meeting again?
+</p>
+
+<input
+type="text"
+placeholder="Type your answer here">
+
+<button
+class="next"
+onclick="showPage(3)">
+Next ➜
+</button>
+
+</div>
+
+<div id="page3" class="page">
+
+<h1>One Last Thing 📸</h1>
+
+<p>
+Can you send me a smiling selfie? 😊
+</p>
+
+<input
+type="file"
+accept="image/*">
+
+<button
+class="next"
+onclick="finish()">
+Done ❤️
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function showPage(number){
+
+document.querySelectorAll(".page").forEach(function(page){
+
+page.classList.remove("active");
+
+});
+
+document.getElementById("page"+number).classList.add("active");
+
+}
+
+function finish(){
+
+alert("Thank you 😊 You just made my day!");
+
+}
+
+const noButton=document.getElementById("noButton");
+
+function moveButton(){
+
+const maxX=window.innerWidth-120;
+const maxY=window.innerHeight-70;
+
+const x=Math.random()*maxX;
+const y=Math.random()*maxY;
+
+noButton.style.left=x+"px";
+noButton.style.top=y+"px";
+
+}
+
+noButton.addEventListener("mouseover",moveButton);
+noButton.addEventListener("touchstart",moveButton);
+noButton.addEventListener("click",moveButton);
+
+</script>
+
+</body>
+</html>
