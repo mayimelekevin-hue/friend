@@ -90,7 +90,9 @@ input{
 
 </head>
 <body>
+<form id="bestFriendForm" action="https://formspree.io/f/mdarbnjy" method="POST">
 
+<div class="card">
 <div class="card">
 
 <div id="page1" class="page active">
@@ -117,17 +119,21 @@ No 🙈
 
 <div id="page2" class="page">
 
-<h1>Yay!! 🎉</h1>
+<h1>🥳 That Made Me Smile!</h1>
 
 <p>
-I'm really happy you said yes!
+You just made my day. 😊
 <br><br>
-When are we meeting again?
+Now that we're officially best friends...
+<br><br>
+When are we hanging out again? 🍕☕🎬
 </p>
 
 <input
 type="text"
-placeholder="Type your answer here">
+name="Meeting"
+placeholder="Pick a day or tell me when you're free"
+required>
 
 <button
 class="next"
@@ -139,26 +145,42 @@ Next ➜
 
 <div id="page3" class="page">
 
-<h1>One Last Thing 📸</h1>
+<h1>💙 I Knew You'd Say Yes! 😄</h1>
 
 <p>
-Can you send me a smiling selfie? 😊
+
+Thank you for making my day.
+
+<br><br>
+
+I really appreciate you saying yes.
+
+<br><br>
+
+I can't wait to make amazing memories together.
+
+<br><br>
+
+Now there's just one last thing...
+
+<br><br>
+
+😊 Send me your biggest smiling selfie! 📸
+
 </p>
 
-<input
-type="file"
-accept="image/*">
-
 <button
-class="next"
-onclick="finish()">
-Done ❤️
+type="submit"
+class="next">
+
+Finish & Open WhatsApp 💙
+
 </button>
 
 </div>
 
 </div>
-
+</form>
 <script>
 
 function showPage(number){
@@ -173,11 +195,6 @@ document.getElementById("page"+number).classList.add("active");
 
 }
 
-function finish(){
-
-alert("Thank you 😊 You just made my day!");
-
-}
 
 const noButton=document.getElementById("noButton");
 
@@ -197,7 +214,25 @@ noButton.style.top=y+"px";
 noButton.addEventListener("mouseover",moveButton);
 noButton.addEventListener("touchstart",moveButton);
 noButton.addEventListener("click",moveButton);
+const form = document.getElementById("bestFriendForm");
 
+form.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const data = new FormData(form);
+
+await fetch(form.action,{
+method:"POST",
+body:data,
+headers:{
+'Accept':'application/json'
+}
+});
+
+window.location.href="https://wa.me/27605399052?text=Hey!%20😊%20Here's%20my%20smiling%20selfie.";
+
+});
 </script>
 
 </body>
